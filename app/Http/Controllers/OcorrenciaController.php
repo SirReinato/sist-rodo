@@ -32,7 +32,17 @@ class OcorrenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome_rodovia' => 'required|string|max:255',
+            'trecho' => 'required|string|max:255',
+            'tipo_problema' => 'required|string|max:255',
+            'data_ocorrencia' => 'required|date',
+            'descricao' => 'nullable|string',
+        ]);
+
+        Ocorrencia::create($request->all());
+
+        return redirect()->route('dashboard')->with('success', 'Ocorrência cadastrada com sucesso!');
     }
 
     /**

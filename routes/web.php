@@ -6,6 +6,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -27,5 +28,9 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/ocorrencias', [OcorrenciaController::class, 'index']);
 Route::post('/ocorrencias', [OcorrenciaController::class, 'store'])->name('ocorrencias.store');
+
+Route::get('/criar-ocorrencia', function () {
+    return Inertia::render('CriarOcorrencia');
+});
 
 require __DIR__ . '/auth.php';

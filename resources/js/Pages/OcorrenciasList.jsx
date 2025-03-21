@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { Link } from "@inertiajs/react";
 
 const Ocorrencias = () => {
     const [ocorrencias, setOcorrencias] = useState([]);
@@ -19,7 +20,12 @@ const Ocorrencias = () => {
 
     return (
         <ContainerGeral>
-            <Titulo>Lista de Ocorrências</Titulo>
+            <ContainerCabecalho>
+                <Titulo>Lista de Ocorrências</Titulo>
+                <Link href="/criar-ocorrencia">
+                    <StyledButton>Criar Ocorrência</StyledButton>
+                </Link>
+            </ContainerCabecalho>
             <Tabela>
                 <CabecalhoTabela>
                     <tr>
@@ -63,6 +69,12 @@ const ContainerGeral = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+`;
+const ContainerCabecalho = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
 `;
 
 const Titulo = styled.h1`
@@ -111,5 +123,20 @@ const LinhaAlerta = styled.tr`
         font-weight: bold;
         text-align: center;
         padding: 20px;
+    }
+`;
+
+const StyledButton = styled.button`
+    background-color: #ff5733;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #da3a18;
     }
 `;

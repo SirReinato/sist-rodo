@@ -1,4 +1,3 @@
-import { breakpoints } from "@/Pages/Welcome";
 import { Link } from "@inertiajs/react";
 import styled from "styled-components";
 
@@ -9,6 +8,15 @@ export default function ItensMenu({ rota, nome }) {
         </Link>
     );
 }
+
+export const breakpoints = {
+    mobileS: "320px",
+    mobileM: "375px",
+    mobileL: "429px",
+    tablet: "768px",
+    laptop: "1024px",
+    desktop: "1440px",
+};
 const EstiloLink = styled.p`
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
         "Lucida Sans Unicode", Geneva, Verdana, sans-serif;

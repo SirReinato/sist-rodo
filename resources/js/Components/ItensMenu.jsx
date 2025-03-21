@@ -1,3 +1,4 @@
+import { breakpoints } from "@/Pages/Welcome";
 import { Link } from "@inertiajs/react";
 import styled from "styled-components";
 
@@ -8,7 +9,6 @@ export default function ItensMenu({ rota, nome }) {
         </Link>
     );
 }
-
 const EstiloLink = styled.p`
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
         "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -18,6 +18,8 @@ const EstiloLink = styled.p`
     font-weight: bold;
     color: #000;
     transition: all 0.2s ease;
+    text-align: center;
+    cursor: pointer;
 
     &:hover {
         color: rgba(0, 0, 0, 0.7);
@@ -31,6 +33,25 @@ const EstiloLink = styled.p`
         border-color: #ff2d20;
     }
 
+    @media (max-width: ${breakpoints.laptop}) {
+        font-size: 22px;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+        font-size: 20px;
+        padding: 0.5rem;
+    }
+
+    @media (max-width: ${breakpoints.mobileL}) {
+        font-size: 18px;
+        padding: 0.4rem;
+    }
+
+    @media (max-width: ${breakpoints.mobileS}) {
+        font-size: 16px;
+        /* padding: 0.3rem; */
+    }
+
     @media (prefers-color-scheme: dark) {
         color: #000;
 
@@ -39,7 +60,7 @@ const EstiloLink = styled.p`
         }
 
         &:focus-visible {
-            border-color: #fff;
+            border-color: #e70000;
         }
     }
 `;

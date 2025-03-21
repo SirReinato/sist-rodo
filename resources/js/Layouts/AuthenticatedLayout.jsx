@@ -4,6 +4,7 @@ import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link, usePage } from "@inertiajs/react";
 import { useState } from "react";
+import styled from "styled-components";
 
 export default function AuthenticatedLayout({ header, children }) {
     const user = usePage().props.auth.user;
@@ -12,25 +13,25 @@ export default function AuthenticatedLayout({ header, children }) {
         useState(false);
 
     return (
-        <div className="min-h-screen bg-gray-100">
-            <nav className="border-b border-gray-100 bg-white">
+        <ContainerGeral>
+            <NavBar>
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 justify-between">
                         <div className="flex">
                             <div className="flex shrink-0 items-center">
-                                <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
-                                </Link>
+                                <LogoContainer>
+                                    <LogoLink href="/">Pelas Estradas</LogoLink>
+                                </LogoContainer>
                             </div>
 
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <NavLinksContainer>
                                 <NavLink
                                     href={route("dashboard")}
                                     active={route().current("dashboard")}
                                 >
-                                    Dashboard
+                                    <StyledNavLink>Inicio</StyledNavLink>
                                 </NavLink>
-                            </div>
+                            </NavLinksContainer>
                         </div>
 
                         <div className="hidden sm:ms-6 sm:flex sm:items-center">
@@ -160,7 +161,7 @@ export default function AuthenticatedLayout({ header, children }) {
                         </div>
                     </div>
                 </div>
-            </nav>
+            </NavBar>
 
             {header && (
                 <header className="bg-white shadow">
@@ -171,6 +172,51 @@ export default function AuthenticatedLayout({ header, children }) {
             )}
 
             <main>{children}</main>
-        </div>
+        </ContainerGeral>
     );
 }
+
+const ContainerGeral = styled.div`
+    min-height: 100vh;
+    background: linear-gradient(45deg, #ff5733, #555555);
+`;
+
+const NavBar = styled.nav`
+    border-bottom: 1px solid #f1f1f1;
+    background-color: #007bff;
+`;
+
+const LogoContainer = styled.div`
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+`;
+
+const LogoLink = styled(Link)`
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: white; /* Você pode mudar a cor do texto conforme necessário */
+    font-size: 1.5rem; /* Ajuste o tamanho da fonte conforme necessário */
+    font-weight: bold; /* Pode adicionar mais estilo como negrito, se desejar */
+`;
+
+const NavLinksContainer = styled.div`
+    display: none;
+    gap: 2rem;
+
+    @media (min-width: 640px) {
+        display: flex;
+        margin-top: -1px;
+        margin-left: 2.5rem;
+    }
+`;
+
+const StyledNavLink = styled.p`
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+
+    &:hover {
+        color: darkblue;
+    }
+`;

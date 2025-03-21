@@ -26,6 +26,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/ocorrencias', [OcorrenciaController::class, 'index']);
-
+Route::post('/ocorrencias', [OcorrenciaController::class, 'store'])->name('ocorrencias.store');
 
 require __DIR__ . '/auth.php';

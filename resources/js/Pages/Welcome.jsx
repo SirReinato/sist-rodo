@@ -1,63 +1,56 @@
 import { Head, Link } from "@inertiajs/react";
 import Ocorrencias from "./OcorrenciasList";
+import styled from "styled-components";
+import logo from "../../../public/assets/imgs/Logo.png";
+import ItensMenu from "@/Components/ItensMenu";
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
-    const handleImageError = () => {
-        document
-            .getElementById("screenshot-container")
-            ?.classList.add("!hidden");
-        document.getElementById("docs-card")?.classList.add("!row-span-1");
-        document
-            .getElementById("docs-card-content")
-            ?.classList.add("!flex-row");
-        document.getElementById("background")?.classList.add("!hidden");
-    };
-
+export default function Welcome({ auth }) {
     return (
         <>
             <Head title="Welcome" />
-            <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
-                <div className="relative flex min-h-screen flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
-                    <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl">
-                        {/* Cabeçalho com navegação */}
-                        <header className="flex items-center gap-2 py-10 lg:grid-cols-3">
-                            <nav className="-mx-3 flex flex-1 justify-end">
-                                {auth.user ? (
-                                    <Link
-                                        href={route("dashboard")}
-                                        className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                    >
-                                        Dashboard
-                                    </Link>
-                                ) : (
-                                    <>
-                                        <Link
-                                            href={route("login")}
-                                            className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                        >
-                                            Login
-                                        </Link>
-                                        <Link
-                                            href={route("register")}
-                                            className="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                        >
-                                            Registrar
-                                        </Link>
-                                    </>
-                                )}
-                            </nav>
-                        </header>
+            <ContainerGeral>
+                <ContainerMenu>
+                    <img src={logo} alt="Logo do site" />
+                    <NavMenu>
+                        {auth.user ? (
+                            <ItensMenu rota="dashboard" nome="Dashboard" />
+                        ) : (
+                            <>
+                                <ItensMenu rota={"login"} nome={"Login"} />
 
-                        <main className="mt-6">
-                            <Ocorrencias />
-                        </main>
-
-                        <footer className="py-16 text-center text-sm text-black dark:text-white/70">
-                            VAMOS COMEÇAR
-                        </footer>
-                    </div>
-                </div>
-            </div>
+                                <ItensMenu
+                                    rota={"register"}
+                                    nome={"Registrar"}
+                                />
+                            </>
+                        )}
+                    </NavMenu>
+                </ContainerMenu>
+            </ContainerGeral>
         </>
     );
 }
+
+const ContainerGeral = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #f4f4f4;
+`;
+
+const ContainerMenu = styled.header`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 16px 120px;
+`;
+
+const NavMenu = styled.nav`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+`;

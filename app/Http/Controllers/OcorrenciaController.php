@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ocorrencia;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class OcorrenciaController extends Controller
 {
@@ -56,17 +57,30 @@ class OcorrenciaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ocorrencia $ocorrencia)
+    public function edit($id)
     {
-        //
+        $ocorrencia = Ocorrencia::findOrFail($id);
+        return Inertia::render('EditarOcorrencia', ['ocorrencia' => $ocorrencia]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ocorrencia $ocorrencia)
+    public function update(Request $request, $id)
     {
-        //
+        $ocorrencia = Ocorrencia::findOrFail($id);
+
+        $request->validate([
+            'nome_rodovia' => 'required|string|max:255',
+            'trecho' => 'required|string|max:255',
+            'tipo_problema' => 'required|string|max:255',
+            'data_ocorrencia' => 'required|date',
+            'descricao' => 'nullable|string',
+        ]);
+
+        $ocorrencia->update($request->all());
+
+        return redirect()->route('dashboard')->with('success', 'Ocorrência atualizada com sucesso!');
     }
 
     /**

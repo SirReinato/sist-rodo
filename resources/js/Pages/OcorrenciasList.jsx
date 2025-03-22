@@ -47,6 +47,11 @@ const Ocorrencias = () => {
                                 <Celula>{ocorrencia.tipo_problema}</Celula>
                                 <Celula>{ocorrencia.data_ocorrencia}</Celula>
                                 <Celula>{ocorrencia.descricao}</Celula>
+                                <Link
+                                    href={`/ocorrencias/${ocorrencia.id}/editar`}
+                                >
+                                    <StyledButton>Editar</StyledButton>
+                                </Link>
                             </LinhaTabela>
                         ))
                     ) : (

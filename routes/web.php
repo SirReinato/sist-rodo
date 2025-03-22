@@ -25,12 +25,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+require __DIR__ . '/auth.php';
 
-Route::get('/ocorrencias', [OcorrenciaController::class, 'index']);
+Route::get('/ocorrencias', [OcorrenciaController::class, 'index'])->name('ocorrencias.index');
 Route::post('/ocorrencias', [OcorrenciaController::class, 'store'])->name('ocorrencias.store');
 
 Route::get('/criar-ocorrencia', function () {
     return Inertia::render('CriarOcorrencia');
 });
+Route::get('/ocorrencias/{id}/editar', [OcorrenciaController::class, 'edit'])->name('ocorrencias.edit');
+Route::put('/ocorrencias/{id}', [OcorrenciaController::class, 'update'])->name('ocorrencias.update');
 
-require __DIR__ . '/auth.php';

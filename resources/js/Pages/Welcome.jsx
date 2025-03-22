@@ -64,7 +64,7 @@ const ContainerGeral = styled.div`
     align-items: center;
     height: 100vh;
     width: 100%;
-    background-color: #f4f4f4;
+    background: linear-gradient(45deg, #ff5733, #555555);
 `;
 
 const ContainerMenu = styled.header`

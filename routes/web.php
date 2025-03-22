@@ -36,3 +36,4 @@ Route::get('/criar-ocorrencia', function () {
 Route::get('/ocorrencias/{id}/editar', [OcorrenciaController::class, 'edit'])->name('ocorrencias.edit');
 Route::put('/ocorrencias/{id}', [OcorrenciaController::class, 'update'])->name('ocorrencias.update');
 
+Route::delete('/ocorrencias/{id}', [OcorrenciaController::class, 'destroy'])->name('ocorrencias.destroy');

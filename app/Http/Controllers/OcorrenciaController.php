@@ -86,8 +86,11 @@ class OcorrenciaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ocorrencia $ocorrencia)
+    public function destroy($id)
     {
-        //
+        $ocorrencia = Ocorrencia::findOrFail($id);
+        $ocorrencia->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Ocorrência excluída com sucesso!');
     }
 }

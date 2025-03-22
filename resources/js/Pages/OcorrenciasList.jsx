@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { Link } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 
 const Ocorrencias = () => {
     const [ocorrencias, setOcorrencias] = useState([]);
@@ -17,6 +17,20 @@ const Ocorrencias = () => {
                 console.error("Erro ao carregar as ocorrências:", error);
             });
     }, []);
+
+    const { delete: destroy, processing } = useForm();
+
+    const handleDelete = (id) => {
+        if (confirm("Tem certeza que deseja excluir esta ocorrência?")) {
+            destroy(`/ocorrencias/${id}`, {
+                onSuccess: () => {
+                    setOcorrencias(
+                        ocorrencias.filter((ocorrencia) => ocorrencia.id !== id)
+                    );
+                },
+            });
+        }
+    };
 
     return (
         <ContainerGeral>
@@ -35,6 +49,7 @@ const Ocorrencias = () => {
                         <CelulaCabecalho>Problema</CelulaCabecalho>
                         <CelulaCabecalho>Data</CelulaCabecalho>
                         <CelulaCabecalho>Descrição</CelulaCabecalho>
+                        <CelulaCabecalho>Ações</CelulaCabecalho>
                     </tr>
                 </CabecalhoTabela>
                 <tbody>
@@ -47,11 +62,23 @@ const Ocorrencias = () => {
                                 <Celula>{ocorrencia.tipo_problema}</Celula>
                                 <Celula>{ocorrencia.data_ocorrencia}</Celula>
                                 <Celula>{ocorrencia.descricao}</Celula>
-                                <Link
-                                    href={`/ocorrencias/${ocorrencia.id}/editar`}
-                                >
-                                    <StyledButton>Editar</StyledButton>
-                                </Link>
+                                <Celula>
+                                    <Link
+                                        href={`/ocorrencias/${ocorrencia.id}/editar`}
+                                    >
+                                        <StyledButton>Editar</StyledButton>
+                                    </Link>
+                                    <ExcluirBotao
+                                        onClick={() =>
+                                            handleDelete(ocorrencia.id)
+                                        }
+                                        disabled={processing}
+                                    >
+                                        {processing
+                                            ? "Excluindo..."
+                                            : "Excluir"}
+                                    </ExcluirBotao>
+                                </Celula>
                             </LinhaTabela>
                         ))
                     ) : (
@@ -143,5 +170,17 @@ const StyledButton = styled.button`
 
     &:hover {
         background-color: #da3a18;
+    }
+`;
+const ExcluirBotao = styled.button`
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &:hover {
+        background-color: #c82333;
     }
 `;

@@ -11,13 +11,23 @@ class OcorrenciaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Buscando todas as ocorrências
-        $ocorrencias = Ocorrencia::all();
+        $query = Ocorrencia::query();
 
-        // Retornando em formato JSON
-        return response()->json($ocorrencias);
+        if ($request->filled('rodovia')) {
+            $query->where('nome_rodovia', 'like', "%{$request->rodovia}%");
+        }
+
+        if ($request->filled('tipo_problema')) {
+            $query->where('tipo_problema', $request->tipo_problema);
+        }
+
+        if ($request->filled('data_ocorrencia')) {
+            $query->whereDate('data_ocorrencia', $request->data_ocorrencia);
+        }
+
+        return response()->json($query->get());
     }
 
     /**

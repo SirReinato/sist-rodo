@@ -2,21 +2,28 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { Link, useForm } from "@inertiajs/react";
+import { getOcorrencias } from "../services/api";
 
 const Ocorrencias = () => {
     const [ocorrencias, setOcorrencias] = useState([]);
+    const [filtros, setFiltros] = useState({
+        rodovia: "",
+        tipo_problema: "",
+        data_ocorrencia: "",
+    });
 
     useEffect(() => {
-        // Requisição para a API Laravel
-        axios
-            .get("http://127.0.0.1:8000/ocorrencias")
-            .then((response) => {
-                setOcorrencias(response.data); // Definindo as ocorrências no estado
-            })
-            .catch((error) => {
-                console.error("Erro ao carregar as ocorrências:", error);
-            });
-    }, []);
+        carregarOcorrencias();
+    }, [filtros]);
+
+    const carregarOcorrencias = async () => {
+        const dados = await getOcorrencias(filtros);
+        setOcorrencias(dados);
+    };
+
+    const handleChange = (e) => {
+        setFiltros({ ...filtros, [e.target.name]: e.target.value });
+    };
 
     const { delete: destroy, processing } = useForm();
 
@@ -40,6 +47,35 @@ const Ocorrencias = () => {
                     <StyledButton>Criar Ocorrência</StyledButton>
                 </Link>
             </ContainerCabecalho>
+
+            {/* filtros */}
+            <FiltrosContainer>
+                <InputFiltro
+                    type="text"
+                    name="rodovia"
+                    placeholder="Rodovia"
+                    value={filtros.rodovia}
+                    onChange={handleChange}
+                />
+                <SelectFiltro
+                    name="tipo_problema"
+                    value={filtros.tipo_problema}
+                    onChange={handleChange}
+                >
+                    <option value="">Todos os problemas</option>
+                    <option value="buraco">Buraco</option>
+                    <option value="acidente">Acidente</option>
+                    <option value="alagamento">Alagamento</option>
+                </SelectFiltro>
+                <InputFiltro
+                    type="date"
+                    name="data_ocorrencia"
+                    value={filtros.data_ocorrencia}
+                    onChange={handleChange}
+                />
+            </FiltrosContainer>
+
+            {/* tablas */}
             <Tabela>
                 <CabecalhoTabela>
                     <tr>
@@ -114,6 +150,24 @@ const Titulo = styled.h1`
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 20px;
+`;
+
+const FiltrosContainer = styled.div`
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+`;
+
+const InputFiltro = styled.input`
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+`;
+
+const SelectFiltro = styled.select`
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 `;
 
 const Tabela = styled.table`

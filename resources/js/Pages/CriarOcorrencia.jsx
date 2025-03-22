@@ -9,11 +9,33 @@ export default function CriarOcorrencia() {
         tipo_problema: "",
         data_ocorrencia: "",
         descricao: "",
+        imagem: null,
     });
+
+    const handleFileChange = (e) => {
+        setData("imagem", e.target.files[0]); // Armazena a imagem no estado
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("ocorrencias.store"));
+
+        const formData = new FormData();
+
+        formData.append("nome_rodovia", data.nome_rodovia);
+        formData.append("trecho", data.trecho);
+        formData.append("tipo_problema", data.tipo_problema);
+        formData.append("data_ocorrencia", data.data_ocorrencia);
+        formData.append("descricao", data.descricao);
+        if (data.imagem) {
+            formData.append("imagem", data.imagem);
+        }
+
+        post(route("ocorrencias.store"), {
+            data: formData,
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        });
     };
 
     return (
@@ -48,6 +70,11 @@ export default function CriarOcorrencia() {
                     placeholder="Descrição"
                     value={data.descricao}
                     onChange={(e) => setData("descricao", e.target.value)}
+                />
+                <Input
+                    type="file"
+                    onChange={handleFileChange}
+                    accept="image/*"
                 />
                 <Botao type="submit" disabled={processing}>
                     {processing ? "Enviando..." : "Cadastrar"}

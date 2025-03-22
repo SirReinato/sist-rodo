@@ -49,9 +49,22 @@ class OcorrenciaController extends Controller
             'tipo_problema' => 'required|string|max:255',
             'data_ocorrencia' => 'required|date',
             'descricao' => 'nullable|string',
+            'imagem' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
 
-        Ocorrencia::create($request->all());
+        $imagemPath = null;
+        if ($request->hasFile('imagem')) {
+            $imagemPath = $request->file('imagem')->store('ocorrencias', 'public');
+        }
+
+        Ocorrencia::create([
+            'nome_rodovia' => $request->nome_rodovia,
+            'trecho' => $request->trecho,
+            'tipo_problema' => $request->tipo_problema,
+            'data_ocorrencia' => $request->data_ocorrencia,
+            'descricao' => $request->descricao,
+            'imagem' => $imagemPath,
+        ]);
 
         return redirect()->route('dashboard')->with('success', 'Ocorrência cadastrada com sucesso!');
     }

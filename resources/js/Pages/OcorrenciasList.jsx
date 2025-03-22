@@ -3,6 +3,8 @@ import axios from "axios";
 import styled from "styled-components";
 import { Link, useForm } from "@inertiajs/react";
 import { getOcorrencias } from "../services/api";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+// import { LatLng } from "leaflet";
 
 const Ocorrencias = () => {
     const [ocorrencias, setOcorrencias] = useState([]);
@@ -137,6 +139,35 @@ const Ocorrencias = () => {
                     )}
                 </tbody>
             </Tabela>
+
+            {/* Mapa com as ocorrências
+            <MapContainer
+                center={[-23.5505, -46.6333]}
+                zoom={12}
+                style={{ width: "100%", height: "400px" }}
+            >
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+                {ocorrencias.map((ocorrencia) => (
+                    <Marker
+                        key={ocorrencia.id}
+                        position={[
+                            parseFloat(ocorrencia.latitude),
+                            parseFloat(ocorrencia.longitude),
+                        ]}
+                    >
+                        <Popup>
+                            <div>
+                                <h4>{ocorrencia.nome_rodovia}</h4>
+                                <p>{ocorrencia.tipo_problema}</p>
+                                <p>{ocorrencia.data_ocorrencia}</p>
+                            </div>
+                        </Popup>
+                    </Marker>
+                ))}
+            </MapContainer> */}
         </ContainerGeral>
     );
 };

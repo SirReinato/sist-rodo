@@ -1,8 +1,7 @@
 import { Head, Link } from "@inertiajs/react";
 import Ocorrencias from "./OcorrenciasList";
 import styled from "styled-components";
-import logo from "../../../public/assets/imgs/Logo.png";
-import banner from "../../../public/assets/imgs/bg-banner.png";
+import banner from "../../../public/assets/imgs/estradas.png";
 import ItensMenu from "@/Components/ItensMenu";
 
 export default function Welcome({ auth }) {
@@ -12,11 +11,7 @@ export default function Welcome({ auth }) {
             <ContainerGeral>
                 <ContainerMenu>
                     <Link href="/">
-                        <img
-                            className="imgLogo"
-                            src={logo}
-                            alt="Logo do site"
-                        />
+                        <TituloBanner>Pelas Estradas</TituloBanner>
                     </Link>
                     <NavMenu>
                         {auth.user ? (
@@ -33,16 +28,16 @@ export default function Welcome({ auth }) {
                         )}
                     </NavMenu>
                 </ContainerMenu>
-                <Banner>
-                    <TituloBanner>
-                        Conectando Você às Informações e Soluções para um
-                        Trânsito Mais Seguro
-                    </TituloBanner>
-                    <ParagrafoBanner>
-                        Cadastre e visualize problemas nas rodovias em tempo
-                        real.
-                    </ParagrafoBanner>
-                </Banner>
+
+                <ConteinerBanner>
+                    <Banner>
+                        <ParagrafoBanner>
+                            Conectando Você às Informações e Soluções para um
+                            Trânsito Mais Seguro
+                        </ParagrafoBanner>
+                    </Banner>
+                    <ImgBanner />
+                </ConteinerBanner>
             </ContainerGeral>
         </>
     );
@@ -64,7 +59,8 @@ const ContainerGeral = styled.div`
     align-items: center;
     height: 100vh;
     width: 100%;
-    background: linear-gradient(45deg, #ff5733, #555555);
+    padding: 32px 120px;
+    background: #1e1e30;
 `;
 
 const ContainerMenu = styled.header`
@@ -73,13 +69,15 @@ const ContainerMenu = styled.header`
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
-    padding: 16px 120px;
+    padding: 32px 0;
+    background: linear-gradient(to right, #203452, #1e1e30);
+
     @media (max-width: ${breakpoints.laptop}) {
-        padding: 16px 80px;
+        padding: 16px 0;
     }
 
     @media (max-width: ${breakpoints.tablet}) {
-        padding: 16px 40px;
+        padding: 16px 0;
     }
 
     @media (max-width: ${breakpoints.mobileL}) {
@@ -94,21 +92,38 @@ const NavMenu = styled.nav`
     justify-content: space-between;
     align-items: center;
     gap: 8px;
-
+    border-radius: 18px;
+    padding: 24px;
+    background-color: #203452;
     @media (max-width: ${breakpoints.mobileL}) {
         flex-direction: column;
         gap: 12px;
     }
 `;
 
-const Banner = styled.div`
+const ConteinerBanner = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+`;
+const ImgBanner = styled.div`
+    width: 100%;
+    height: 100%;
     background: url(${banner}) no-repeat center;
     background-size: cover;
-    height: 100vh;
+    border-radius: 16px;
+`;
+
+const Banner = styled.div`
+    background: linear-gradient(to right, #203452, #1e1e30);
+    background-size: cover;
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     padding: 0 20px;
 
@@ -126,10 +141,10 @@ const Banner = styled.div`
 `;
 
 export const TituloBanner = styled.h1`
-    width: 80%;
-    color: #f4f4f4;
-    font-size: 56px;
+    color: #f3fbf6;
+    font-size: 64px;
     font-weight: bold;
+    letter-spacing: 0.1em;
     text-align: center;
     margin-bottom: 16px;
     font-family: "Roboto", sans-serif;
@@ -158,11 +173,13 @@ export const TituloBanner = styled.h1`
 `;
 
 const ParagrafoBanner = styled.h3`
-    color: #ff7f64;
-    font-size: 36px;
+    color: #f3fbf6;
+    font-size: 40px;
+    letter-spacing: 0.1em;
+
     text-align: center;
     font-family: "Roboto", sans-serif;
-    line-height: 30px;
+    line-height: 48px;
     font-weight: bold;
 
     @media (max-width: ${breakpoints.laptop}) {

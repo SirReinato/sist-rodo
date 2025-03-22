@@ -18,19 +18,19 @@ export const breakpoints = {
     desktop: "1440px",
 };
 const EstiloLink = styled.p`
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    font-size: 24px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande";
+    font-size: 32px;
+    font-weight: bold;
     border-radius: 0.375rem;
     padding: 0.5rem 0.75rem;
     font-weight: bold;
-    color: #000;
+    color: #f6efef;
     transition: all 0.2s ease;
     text-align: center;
     cursor: pointer;
 
     &:hover {
-        color: rgba(0, 0, 0, 0.7);
+        color: #4ebaf5;
     }
 
     &:focus {
@@ -38,7 +38,7 @@ const EstiloLink = styled.p`
     }
 
     &:focus-visible {
-        border-color: #ff2d20;
+        border-color: #4ebaf5;
     }
 
     @media (max-width: ${breakpoints.laptop}) {
@@ -61,14 +61,14 @@ const EstiloLink = styled.p`
     }
 
     @media (prefers-color-scheme: dark) {
-        color: #000;
+        color: #f6efef;
 
         &:hover {
-            color: rgba(255, 84, 32, 0.8);
+            color: #4ebaf5;
         }
 
         &:focus-visible {
-            border-color: #e70000;
+            border-color: #4ebaf5;
         }
     }
 `;

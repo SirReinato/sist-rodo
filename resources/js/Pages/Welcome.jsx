@@ -3,6 +3,7 @@ import Ocorrencias from "./OcorrenciasList";
 import styled from "styled-components";
 import banner from "../../../public/assets/imgs/estradas.png";
 import ItensMenu from "@/Components/ItensMenu";
+import CardsWelcome from "@/Components/CardsWelcome";
 
 export default function Welcome({ auth }) {
     return (
@@ -35,6 +36,33 @@ export default function Welcome({ auth }) {
                             Conectando Você às Informações e Soluções para um
                             Trânsito Mais Seguro
                         </ParagrafoBanner>
+
+                        <BannerCardsContainer>
+                            <CardsWelcome
+                                texto={"São  mais de"}
+                                destaque={"70 BRs"}
+                            />
+                            <CardsWelcome
+                                texto={"São aproximadamente"}
+                                destaque={"75.000 Km"}
+                            />
+                            <CardsWelcome
+                                texto={"Acidentes de trânsito anuais"}
+                                destaque={"500.000"}
+                            />
+                            <CardsWelcome
+                                texto={"Estradas em condições inadequadas"}
+                                destaque={"60%"}
+                            />
+                            <CardsWelcome
+                                texto={"Veiculos no brasil"}
+                                destaque={"40 Milhões"}
+                            />
+                            <CardsWelcome
+                                texto={"Interdições e bloqueios"}
+                                destaque={"1.000 anualmente"}
+                            />
+                        </BannerCardsContainer>
                     </Banner>
                     <ImgBanner />
                 </ConteinerBanner>
@@ -70,7 +98,7 @@ const ContainerMenu = styled.header`
     flex-wrap: wrap;
     width: 100%;
     padding: 32px 0;
-    background: linear-gradient(to right, #203452, #1e1e30);
+    background: linear-gradient(to right, #242437, #1e1e30);
 
     @media (max-width: ${breakpoints.laptop}) {
         padding: 16px 0;
@@ -117,12 +145,13 @@ const ImgBanner = styled.div`
 `;
 
 const Banner = styled.div`
-    background: linear-gradient(to right, #203452, #1e1e30);
+    background: linear-gradient(to right, #242437, #1e1e30);
     background-size: cover;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
+    gap: 32px;
     /* justify-content: center; */
     align-items: center;
     padding: 0 20px;
@@ -140,10 +169,30 @@ const Banner = styled.div`
     }
 `;
 
+const BannerCardsContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-top: 32px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+        justify-content: center;
+        gap: 24px;
+    }
+
+    @media (max-width: ${breakpoints.mobileL}) {
+        gap: 16px;
+        margin-top: 16px;
+    }
+`;
+
 export const TituloBanner = styled.h1`
     color: #f3fbf6;
     font-size: 64px;
     font-weight: bold;
+    padding-left: 8px;
     letter-spacing: 0.1em;
     text-align: center;
     margin-bottom: 16px;

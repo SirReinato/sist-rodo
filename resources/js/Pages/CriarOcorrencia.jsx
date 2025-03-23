@@ -9,6 +9,8 @@ export default function CriarOcorrencia() {
         tipo_problema: "",
         data_ocorrencia: "",
         descricao: "",
+        latitude: "",
+        longitude: "",
         imagem: null,
     });
 
@@ -24,6 +26,9 @@ export default function CriarOcorrencia() {
         formData.append("nome_rodovia", data.nome_rodovia);
         formData.append("trecho", data.trecho);
         formData.append("tipo_problema", data.tipo_problema);
+        formData.append("data_ocorrencia", data.data_ocorrencia);
+        formData.append("latitude", data.latitude);
+        formData.append("longitude", data.longitude);
         formData.append("data_ocorrencia", data.data_ocorrencia);
         formData.append("descricao", data.descricao);
         if (data.imagem) {
@@ -57,6 +62,19 @@ export default function CriarOcorrencia() {
                         value={data.trecho}
                         onChange={(e) => setData("trecho", e.target.value)}
                     />
+                    <Input
+                        type="number"
+                        placeholder="Latitude"
+                        value={data.latitude}
+                        onChange={(e) => setData("latitude", e.target.value)}
+                    />
+                    <Input
+                        type="number"
+                        placeholder="Longitude"
+                        value={data.longitude}
+                        onChange={(e) => setData("longitude", e.target.value)}
+                    />
+
                     <Input
                         type="text"
                         placeholder="Tipo de Problema"

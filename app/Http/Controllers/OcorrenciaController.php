@@ -48,6 +48,8 @@ class OcorrenciaController extends Controller
             'trecho' => 'required|string|max:255',
             'tipo_problema' => 'required|string|max:255',
             'data_ocorrencia' => 'required|date',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
             'descricao' => 'nullable|string',
             'imagem' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
@@ -62,6 +64,8 @@ class OcorrenciaController extends Controller
             'trecho' => $request->trecho,
             'tipo_problema' => $request->tipo_problema,
             'data_ocorrencia' => $request->data_ocorrencia,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
             'descricao' => $request->descricao,
             'imagem' => $imagemPath,
         ]);

@@ -1,5 +1,4 @@
 import { Head, Link } from "@inertiajs/react";
-import Ocorrencias from "./OcorrenciasList";
 import styled from "styled-components";
 import banner from "../../../public/assets/imgs/estradas.png";
 import ItensMenu from "@/Components/ItensMenu";
@@ -119,10 +118,9 @@ const NavMenu = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
-    border-radius: 18px;
-    padding: 24px;
     background-color: #203452;
+    border-radius: 18px;
+
     @media (max-width: ${breakpoints.mobileL}) {
         flex-direction: column;
         gap: 12px;

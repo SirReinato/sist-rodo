@@ -28,6 +28,8 @@ const EstiloLink = styled.p`
     transition: all 0.2s ease;
     text-align: center;
     cursor: pointer;
+    padding: 16px;
+    background-color: #203452;
 
     &:hover {
         color: #4ebaf5;
@@ -64,7 +66,8 @@ const EstiloLink = styled.p`
         color: #f6efef;
 
         &:hover {
-            color: #4ebaf5;
+            background-color: #4ebaf5;
+            color: #203452;
         }
 
         &:focus-visible {

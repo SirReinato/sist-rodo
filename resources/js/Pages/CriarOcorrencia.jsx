@@ -75,14 +75,25 @@ export default function CriarOcorrencia() {
                         onChange={(e) => setData("longitude", e.target.value)}
                     />
 
-                    <Input
-                        type="text"
-                        placeholder="Tipo de Problema"
+                    <select
                         value={data.tipo_problema}
                         onChange={(e) =>
                             setData("tipo_problema", e.target.value)
                         }
-                    />
+                        placeholder="Tipo de Problema"
+                    >
+                        <option value="" disabled>
+                            Tipo de Problema
+                        </option>
+                        <option value="buraco">buraco</option>
+                        <option value="sinalização danificada">
+                            sinalização danificada
+                        </option>
+                        <option value="erosão">erosão</option>{" "}
+                        {/* Corrigido com acento */}
+                        <option value="alagamento">alagamento</option>
+                        <option value="outro">outro</option>
+                    </select>
                     <Input
                         type="date"
                         value={data.data_ocorrencia}

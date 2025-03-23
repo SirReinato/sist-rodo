@@ -1,6 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import Ocorrencias from "./OcorrenciasList";
+import styled from "styled-components";
 
 export default function Dashboard() {
     return (
@@ -13,15 +14,33 @@ export default function Dashboard() {
         >
             <Head title="Dashboard" />
 
-            <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                            <Ocorrencias />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ContainerGeral>
+                <ContainerCentral>
+                    <ConteinerPrincipal>
+                        <Ocorrencias />
+                    </ConteinerPrincipal>
+                </ContainerCentral>
+            </ContainerGeral>
         </AuthenticatedLayout>
     );
 }
+
+const ContainerGeral = styled.div`
+    margin-top: 32px;
+`;
+
+const ContainerCentral = styled.div`
+    width: 100%;
+    padding: 0 120px;
+`;
+
+const ConteinerPrincipal = styled.div`
+    width: 100%;
+    background-color: #f3fbf6;
+    border-radius: 32px;
+    /* padding: 20px; */
+    display: flex;
+    border: #75ceff 32px solid;
+    flex-direction: column;
+    align-items: center;
+`;

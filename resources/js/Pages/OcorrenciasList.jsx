@@ -3,9 +3,9 @@ import axios from "axios";
 import styled from "styled-components";
 import { Link, useForm } from "@inertiajs/react";
 import { getOcorrencias } from "../services/api";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import Mapa from "@/Components/Mapa";
-// import { LatLng } from "leaflet";
+import { RiDeleteBin5Line } from "react-icons/ri";
+import { MdOutlineModeEdit } from "react-icons/md";
 
 const Ocorrencias = () => {
     const [ocorrencias, setOcorrencias] = useState([]);
@@ -118,7 +118,9 @@ const Ocorrencias = () => {
                                     <Link
                                         href={`/ocorrencias/${ocorrencia.id}/editar`}
                                     >
-                                        <StyledButton>Editar</StyledButton>
+                                        <StyledButton>
+                                            <MdOutlineModeEdit />
+                                        </StyledButton>
                                     </Link>
                                     <ExcluirBotao
                                         onClick={() =>
@@ -126,9 +128,11 @@ const Ocorrencias = () => {
                                         }
                                         disabled={processing}
                                     >
-                                        {processing
-                                            ? "Excluindo..."
-                                            : "Excluir"}
+                                        {processing ? (
+                                            "Excluindo..."
+                                        ) : (
+                                            <RiDeleteBin5Line />
+                                        )}
                                     </ExcluirBotao>
                                 </Celula>
                             </LinhaTabela>
@@ -142,8 +146,9 @@ const Ocorrencias = () => {
             </Tabela>
 
             {/* Mapa */}
-            <h1>TEEESSSTEEEEEEE</h1>
-            <Mapa ocorrencias={ocorrencias} />
+            <MapaContainer>
+                <Mapa ocorrencias={ocorrencias} />
+            </MapaContainer>
         </ContainerGeral>
     );
 };
@@ -151,8 +156,8 @@ const Ocorrencias = () => {
 export default Ocorrencias;
 
 const ContainerGeral = styled.div`
-    background-color: #f3fbf6;
-    /* min-height: 100vh; */
+    width: 100%;
+    border-radius: 32px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -162,7 +167,7 @@ const ContainerCabecalho = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
+    width: 100%;
 `;
 
 const Titulo = styled.h1`
@@ -192,10 +197,9 @@ const SelectFiltro = styled.select`
 `;
 
 const Tabela = styled.table`
-    width: 90%;
-    max-width: 1000px;
+    width: 100%;
     border-collapse: collapse;
-    background-color: #fff;
+    background-color: #b7e3fc;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
@@ -208,12 +212,13 @@ const CabecalhoTabela = styled.thead`
 
 const CelulaCabecalho = styled.th`
     padding: 12px;
-    text-align: left;
+    text-align: start;
     font-size: 16px;
 `;
 
 const Celula = styled.td`
-    padding: 12px;
+    max-width: 350px;
+    padding: 8px;
     color: #555555; /* Texto secundário */
     font-size: 14px;
 `;
@@ -236,9 +241,9 @@ const LinhaAlerta = styled.tr`
 const StyledButton = styled.button`
     background-color: #75ceff;
     color: #1e1e30;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -251,14 +256,28 @@ const StyledButton = styled.button`
 const ExcluirBotao = styled.button`
     background-color: #e13600;
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     border: none;
     cursor: pointer;
     border-radius: 4px;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-left: 2px;
     &:hover {
         background-color: #c82333;
     }
+`;
+
+const MapaContainer = styled.div`
+    width: 80%;
+    height: 400px;
+    margin-top: 64px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f3fbf6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 `;

@@ -81,7 +81,6 @@ const Ocorrencias = () => {
             <Tabela>
                 <CabecalhoTabela>
                     <tr>
-                        <CelulaCabecalho>ID</CelulaCabecalho>
                         <CelulaCabecalho>Rodovia</CelulaCabecalho>
                         <CelulaCabecalho>Trecho</CelulaCabecalho>
                         <CelulaCabecalho>Problema</CelulaCabecalho>
@@ -95,7 +94,6 @@ const Ocorrencias = () => {
                     {ocorrencias.length > 0 ? (
                         ocorrencias.map((ocorrencia) => (
                             <LinhaTabela key={ocorrencia.id}>
-                                <Celula>{ocorrencia.id}</Celula>
                                 <Celula>{ocorrencia.nome_rodovia}</Celula>
                                 <Celula>{ocorrencia.trecho}</Celula>
                                 <Celula>{ocorrencia.tipo_problema}</Celula>
@@ -175,7 +173,7 @@ const Ocorrencias = () => {
 export default Ocorrencias;
 
 const ContainerGeral = styled.div`
-    background-color: #f4f4f4;
+    background-color: #f3fbf6;
     /* min-height: 100vh; */
     padding: 20px;
     display: flex;
@@ -209,6 +207,7 @@ const InputFiltro = styled.input`
 `;
 
 const SelectFiltro = styled.select`
+    width: 200px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -257,8 +256,8 @@ const LinhaAlerta = styled.tr`
 `;
 
 const StyledButton = styled.button`
-    background-color: #ff5733;
-    color: white;
+    background-color: #75ceff;
+    color: #1e1e30;
     padding: 0.5rem 1rem;
     font-weight: bold;
     font-size: 1.2rem;
@@ -267,17 +266,20 @@ const StyledButton = styled.button`
     cursor: pointer;
 
     &:hover {
-        background-color: #da3a18;
+        color: #75ceff;
+        background-color: #1a2e4e;
     }
 `;
 const ExcluirBotao = styled.button`
-    background-color: #dc3545;
+    background-color: #e13600;
     color: white;
-    padding: 5px 10px;
+    padding: 0.5rem 1rem;
     border: none;
     cursor: pointer;
     border-radius: 4px;
-
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: 2px;
     &:hover {
         background-color: #c82333;
     }

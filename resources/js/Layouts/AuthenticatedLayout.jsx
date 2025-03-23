@@ -1,4 +1,3 @@
-import ApplicationLogo from "@/Components/ApplicationLogo";
 import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
@@ -178,12 +177,12 @@ export default function AuthenticatedLayout({ header, children }) {
 
 const ContainerGeral = styled.div`
     min-height: 100vh;
-    background: linear-gradient(45deg, #ff5733, #555555);
+    background: linear-gradient(to right, #242437, #1e1e30);
 `;
 
 const NavBar = styled.nav`
     border-bottom: 1px solid #f1f1f1;
-    background-color: #007bff;
+    background-color: #4ebaf5;
 `;
 
 const LogoContainer = styled.div`
@@ -193,10 +192,10 @@ const LogoContainer = styled.div`
 `;
 
 const LogoLink = styled(Link)`
-    text-decoration: none; /* Remove o sublinhado do link */
-    color: white; /* Você pode mudar a cor do texto conforme necessário */
-    font-size: 1.5rem; /* Ajuste o tamanho da fonte conforme necessário */
-    font-weight: bold; /* Pode adicionar mais estilo como negrito, se desejar */
+    text-decoration: none;
+    color: #1e1e30;
+    font-size: 1.5rem;
+    font-weight: bold;
 `;
 
 const NavLinksContainer = styled.div`
@@ -211,12 +210,12 @@ const NavLinksContainer = styled.div`
 `;
 
 const StyledNavLink = styled.p`
-    font-size: 16px;
+    font-size: 20px;
     text-decoration: none;
-    color: #fff;
+    color: #1e1e30;
     font-weight: 500;
 
     &:hover {
-        color: darkblue;
+        color: #75ceff;
     }
 `;

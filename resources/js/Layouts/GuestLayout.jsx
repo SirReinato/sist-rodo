@@ -33,7 +33,7 @@ const ConteinerLogin = styled.div`
     gap: 16px;
     height: 100vh;
     width: 100%;
-    background: linear-gradient(45deg, #ff5733, #555555);
+    background: linear-gradient(to right, #1e1e30, #1e1e30);
 `;
 const TituloLogin = styled.h2`
     width: 100%;

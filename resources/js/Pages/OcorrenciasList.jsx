@@ -41,7 +41,6 @@ const Ocorrencias = () => {
             });
         }
     };
-
     return (
         <ContainerGeral>
             <ContainerCabecalho>

@@ -38,25 +38,18 @@ npm install
 npm run dev
 ```
 
-## 🌎 Deploy na Vercel
-
-1. Conecte o repositório na Vercel.
-2. Configure as variáveis de ambiente, se necessário.
-3. A Vercel gerará automaticamente um link para acesso: `https://seu-projeto.vercel.app`
 
 ## 🛠 Funcionalidades Principais
 
-- 📌 Descreva funcionalidades principais do seu sistema.
-- 🔍 Pesquisa de ocorrências.
-- 📄 Geração de relatórios.
+- Cadastro de ocorrências de problemas em rodovias
+- Listagem e filtro de ocorrências por tipo, rodovia e data
+- Autenticação de usuários com Laravel Breeze
+- Mapa interativo com localização das ocorrências
 
 ## 📜 Licença
 
 Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
----
-
-Se precisar personalizar mais alguma coisa, me avise!
 
 
 

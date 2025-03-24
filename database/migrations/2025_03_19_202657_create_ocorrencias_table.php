@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->text('descricao')->nullable();
             $table->decimal('latitude', 10, 7)->nullable();
             $table->decimal('longitude', 10, 7)->nullable();
+            $table->string('imagem')->nullable();
             $table->timestamps();
         });
     }

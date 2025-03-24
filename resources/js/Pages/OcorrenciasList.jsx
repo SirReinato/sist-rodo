@@ -66,7 +66,10 @@ const Ocorrencias = () => {
                 >
                     <option value="">Todos os problemas</option>
                     <option value="buraco">Buraco</option>
-                    <option value="acidente">Acidente</option>
+                    <option value="erosão">Erosão</option>
+                    <option value="sinalização danificada">
+                        Sinalização Sanificada
+                    </option>
                     <option value="alagamento">Alagamento</option>
                 </SelectFiltro>
                 <InputFiltro
@@ -104,9 +107,9 @@ const Ocorrencias = () => {
                                 <Celula>
                                     {ocorrencia.imagem ? (
                                         <img
-                                            src={`storage/${ocorrencia.imagem}`}
+                                            src={`/storage/${ocorrencia.imagem}`}
                                             alt="Imagem da Ocorrência"
-                                            width="100" // Pode ajustar o tamanho da imagem
+                                            width="10"
                                             height="auto"
                                         />
                                     ) : (

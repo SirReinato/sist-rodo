@@ -13,6 +13,14 @@
 - **Gerenciamento de Estado**: useState e useEffect
 - **Deploy**: Vercel 
 
+## 🛠 Funcionalidades Principais
+
+- Cadastro de ocorrências de problemas em rodovias
+- Listagem e filtro de ocorrências por tipo, rodovia e data
+- Autenticação de usuários com Laravel Breeze
+- Mapa interativo com localização das ocorrências
+  
+
 ## 📂 Como Rodar o Projeto Localmente
 
 ### 1. Clonar o repositório
@@ -39,12 +47,7 @@ npm run dev
 ```
 
 
-## 🛠 Funcionalidades Principais
 
-- Cadastro de ocorrências de problemas em rodovias
-- Listagem e filtro de ocorrências por tipo, rodovia e data
-- Autenticação de usuários com Laravel Breeze
-- Mapa interativo com localização das ocorrências
 
 ## 📜 Licença
 

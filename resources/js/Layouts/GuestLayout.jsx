@@ -10,7 +10,7 @@ export default function GuestLayout({ children }) {
                 {children}
             </div>
             <Link href="/">
-                <h3>Voltar a home</h3>
+                <TituloHome>Voltar a home</TituloHome>
             </Link>
         </ConteinerLogin>
     );
@@ -64,5 +64,13 @@ const TituloLogin = styled.h2`
     @media (max-width: ${breakpoints.mobileS}) {
         font-size: 24px;
         line-height: 32px;
+    }
+`;
+
+const TituloHome = styled.h3`
+    font-size: 16px;
+    color: #f4f4f4;
+    :hover {
+        color: #4ebaf5;
     }
 `;

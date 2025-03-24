@@ -220,7 +220,7 @@ export const TituloBanner = styled.h1`
 `;
 
 const ParagrafoBanner = styled.h3`
-    color: #f3fbf6;
+    color: #4ebaf5;
     font-size: 40px;
     letter-spacing: 0.1em;
 

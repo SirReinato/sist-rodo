@@ -90,7 +90,7 @@ const Ocorrencias = () => {
                         <CelulaCabecalho>Problema</CelulaCabecalho>
                         <CelulaCabecalho>Data</CelulaCabecalho>
                         <CelulaCabecalho>Descrição</CelulaCabecalho>
-                        <CelulaCabecalho>Foto</CelulaCabecalho>
+                        {/* <CelulaCabecalho>Foto</CelulaCabecalho> */}
                         <CelulaCabecalho>Ações</CelulaCabecalho>
                     </tr>
                 </CabecalhoTabela>
@@ -104,7 +104,9 @@ const Ocorrencias = () => {
                                 <Celula>{ocorrencia.tipo_problema}</Celula>
                                 <Celula>{ocorrencia.data_ocorrencia}</Celula>
                                 <Celula>{ocorrencia.descricao}</Celula>
-                                <Celula>
+
+                                {/* Inserir futuramente */}
+                                {/* <Celula>
                                     {ocorrencia.imagem ? (
                                         <img
                                             src={`/storage/${ocorrencia.imagem}`}
@@ -115,7 +117,7 @@ const Ocorrencias = () => {
                                     ) : (
                                         "Sem imagem"
                                     )}
-                                </Celula>
+                                </Celula> */}
                                 <Celula>
                                     <Link
                                         href={`/ocorrencias/${ocorrencia.id}/editar`}

@@ -15,10 +15,13 @@
 
 ## 🛠 Funcionalidades Principais
 
-- Cadastro de ocorrências de problemas em rodovias
-- Listagem e filtro de ocorrências por tipo, rodovia e data
-- Autenticação de usuários com Laravel Breeze
-- Mapa interativo com localização das ocorrências
+Cadastro de ocorrências de problemas em rodovias
+
+Listagem e filtro de ocorrências por tipo, rodovia e data
+
+Autenticação de usuários com Laravel Breeze
+
+Mapa interativo com localização das ocorrências utilizando React-Leaflet
   
 
 ## 📂 Como Rodar o Projeto Localmente

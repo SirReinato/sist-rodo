@@ -11,7 +11,7 @@
 - **Backend**: Laravel com Laravel Breeze (React)
 - **Banco de Dados**: SQLite
 - **Gerenciamento de Estado**: useState e useEffect
-- **Deploy**: Vercel (frontend) e Laravel (backend, necessário configuração manual para hospedagem)
+- **Deploy**: Vercel 
 
 ## 📂 Como Rodar o Projeto Localmente
 

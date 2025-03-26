@@ -5,6 +5,7 @@ import { getOcorrencias } from "../services/api";
 import Mapa from "@/Components/Mapa";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { MdOutlineModeEdit } from "react-icons/md";
+import ModalVisualizacaoOcorrencia from "@/Components/Modal";
 
 const Ocorrencias = () => {
     const [ocorrencias, setOcorrencias] = useState([]);
@@ -41,6 +42,20 @@ const Ocorrencias = () => {
             });
         }
     };
+
+    const [ocorrenciaSelecionada, setOcorrenciaSelecionada] = useState(null);
+    const [modalAberto, setModalAberto] = useState(false);
+
+    const abrirModal = (ocorrencia) => {
+        setOcorrenciaSelecionada(ocorrencia);
+        setModalAberto(true);
+    };
+
+    const fecharModal = () => {
+        setModalAberto(false);
+        setOcorrenciaSelecionada(null);
+    };
+
     return (
         <ContainerGeral>
             {/* header */}
@@ -81,6 +96,13 @@ const Ocorrencias = () => {
                 />
             </FiltrosContainer>
 
+            {/* modal */}
+            <ModalVisualizacaoOcorrencia
+                ocorrencia={ocorrenciaSelecionada}
+                open={modalAberto}
+                onClose={fecharModal}
+            />
+
             {/* tablas */}
             <Tabela>
                 <CabecalhoTabela>
@@ -108,12 +130,13 @@ const Ocorrencias = () => {
 
                                 <Celula>
                                     {ocorrencia.imagem ? (
-                                        <img
-                                            src={`/storage/${ocorrencia.imagem}`}
-                                            alt="Imagem da Ocorrência"
-                                            width="100%"
-                                            height="auto"
-                                        />
+                                        <button
+                                            onClick={() =>
+                                                abrirModal(ocorrencia)
+                                            }
+                                        >
+                                            abrir
+                                        </button>
                                     ) : (
                                         "Sem imagem"
                                     )}

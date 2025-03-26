@@ -1,65 +1,69 @@
 import {
     Dialog,
-    DialogPanel,
-    Transition,
-    TransitionChild,
-} from '@headlessui/react';
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+} from "@/Components/ui/dialog";
+import { Button } from "@/Components/ui/button";
+import styled from "styled-components";
 
-export default function Modal({
-    children,
-    show = false,
-    maxWidth = '2xl',
-    closeable = true,
-    onClose = () => {},
-}) {
-    const close = () => {
-        if (closeable) {
-            onClose();
-        }
-    };
-
-    const maxWidthClass = {
-        sm: 'sm:max-w-sm',
-        md: 'sm:max-w-md',
-        lg: 'sm:max-w-lg',
-        xl: 'sm:max-w-xl',
-        '2xl': 'sm:max-w-2xl',
-    }[maxWidth];
+const ModalVisualizacaoOcorrencia = ({ ocorrencia, open, onClose }) => {
+    if (!ocorrencia) return null;
 
     return (
-        <Transition show={show} leave="duration-200">
-            <Dialog
-                as="div"
-                id="modal"
-                className="fixed inset-0 z-50 flex transform items-center overflow-y-auto px-4 py-6 transition-all sm:px-0"
-                onClose={close}
-            >
-                <TransitionChild
-                    enter="ease-out duration-300"
-                    enterFrom="opacity-0"
-                    enterTo="opacity-100"
-                    leave="ease-in duration-200"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
-                >
-                    <div className="absolute inset-0 bg-gray-500/75" />
-                </TransitionChild>
-
-                <TransitionChild
-                    enter="ease-out duration-300"
-                    enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                    enterTo="opacity-100 translate-y-0 sm:scale-100"
-                    leave="ease-in duration-200"
-                    leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                    leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                >
-                    <DialogPanel
-                        className={`mb-6 transform overflow-hidden rounded-lg bg-white shadow-xl transition-all sm:mx-auto sm:w-full ${maxWidthClass}`}
-                    >
-                        {children}
-                    </DialogPanel>
-                </TransitionChild>
+        <ContainerStyled>
+            <Dialog open={open} onOpenChange={onClose}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Detalhes da Ocorrência</DialogTitle>
+                    </DialogHeader>
+                    <div className="flex flex-col items-center">
+                        {ocorrencia.imagem && (
+                            <img
+                                src={`/storage/${ocorrencia.imagem}`}
+                                alt="Imagem da ocorrência"
+                                className="w-full max-h-80 object-cover rounded-lg"
+                            />
+                        )}
+                        <div className="mt-4 text-left w-full">
+                            <p>
+                                <strong>Rodovia:</strong>{" "}
+                                {ocorrencia.nome_rodovia}
+                            </p>
+                            <p>
+                                <strong>Trecho:</strong> {ocorrencia.trecho}
+                            </p>
+                            <p>
+                                <strong>Tipo:</strong>{" "}
+                                {ocorrencia.tipo_problema}
+                            </p>
+                            <p>
+                                <strong>Data:</strong>{" "}
+                                {ocorrencia.data_ocorrencia}
+                            </p>
+                            <p>
+                                <strong>Descrição:</strong>{" "}
+                                {ocorrencia.descricao || "Sem descrição"}
+                            </p>
+                        </div>
+                        <Button onClick={onClose} className="mt-4">
+                            Fechar
+                        </Button>
+                    </div>
+                </DialogContent>
             </Dialog>
-        </Transition>
+        </ContainerStyled>
     );
-}
+};
+
+export default ModalVisualizacaoOcorrencia;
+
+const ContainerStyled = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    margin-bottom: 50px;
+    height: 100%;
+    width: 500px;
+`;

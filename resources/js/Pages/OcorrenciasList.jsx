@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import styled from "styled-components";
 import { Link, useForm } from "@inertiajs/react";
 import { getOcorrencias } from "../services/api";
@@ -30,6 +29,7 @@ const Ocorrencias = () => {
 
     const { delete: destroy, processing } = useForm();
 
+    // Deletar ocorrencia
     const handleDelete = (id) => {
         if (confirm("Tem certeza que deseja excluir esta ocorrência?")) {
             destroy(`/ocorrencias/${id}`, {
@@ -43,6 +43,7 @@ const Ocorrencias = () => {
     };
     return (
         <ContainerGeral>
+            {/* header */}
             <ContainerCabecalho>
                 <Titulo>Lista de Ocorrências</Titulo>
                 <Link href="/criar-ocorrencia">
@@ -163,7 +164,7 @@ export const breakpoints = {
     mobileS: "320px",
     mobileM: "375px",
     mobileL: "429px",
-    tablet: "768px",
+    tablet: "835px",
     laptop: "1024px",
     desktop: "1440px",
 };
@@ -204,11 +205,13 @@ const Titulo = styled.h1`
 
 const FiltrosContainer = styled.div`
     display: flex;
+    justify-content: center;
     gap: 12px;
     margin-bottom: 16px;
-    flex-wrap: wrap;
-    justify-content: start;
     @media (max-width: ${breakpoints.mobileL}) {
+        flex-wrap: wrap;
+        justify-content: start;
+
         justify-content: center;
         align-items: center;
     }
@@ -222,6 +225,10 @@ const InputFiltro = styled.input`
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    min-width: 30%;
+    max-width: 31%;
+    @media (max-width: ${breakpoints.tablet}) {
+    }
     @media (min-width: ${breakpoints.mobileS}) {
         width: 100%;
     }

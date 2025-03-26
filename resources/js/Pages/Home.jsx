@@ -5,7 +5,7 @@ import card from "../../../public/assets/imgs/estradas.png";
 import ItensMenu from "@/Components/ItensMenu";
 import CardsWelcome from "@/Components/CardsWelcome";
 
-export default function Welcome({ auth }) {
+export default function Home({ auth }) {
     return (
         <>
             <Head title="Home" />
@@ -56,7 +56,7 @@ export const breakpoints = {
     mobileS: "320px",
     mobileM: "375px",
     mobileL: "429px",
-    tablet: "768px",
+    tablet: "835px",
     laptop: "1024px",
     desktop: "1440px",
 };
@@ -78,7 +78,7 @@ const ContainerGeral = styled.div`
     }
 
     @media (max-width: ${breakpoints.tablet}) {
-        padding: 60px 40px 32px 40px;
+        padding: 80px 20px 32px 20px;
         flex-direction: column;
         justify-content: flex-start;
     }
@@ -125,8 +125,8 @@ const ContainerMenu = styled.header`
     @media (max-width: ${breakpoints.tablet}) {
         padding: 16px;
         top: 32px;
-        left: 5%;
-        width: 90%;
+        left: 10%;
+        width: 80%;
     }
 
     @media (max-width: ${breakpoints.mobileL}) {
@@ -230,8 +230,7 @@ const ConteinerTexto = styled.div`
     width: 40%;
     @media (max-width: ${breakpoints.tablet}) {
         width: 100%;
-        align-items: center;
-        text-align: center;
+        height: 100%;
     }
 `;
 
@@ -241,16 +240,6 @@ const ConteinerCards = styled.div`
     justify-content: end;
 
     @media (max-width: ${breakpoints.tablet}) {
-        width: 100%;
-        margin-top: 20px;
-        justify-content: center;
-        align-items: center;
-    }
-    @media (max-width: ${breakpoints.mobileL}) {
-        display: none;
-    }
-
-    @media (max-width: ${breakpoints.mobileS}) {
         display: none;
     }
 `;
@@ -273,22 +262,6 @@ const Card = styled.div`
         width: 400px;
         height: 55%;
     }
-
-    @media (max-width: ${breakpoints.tablet}) {
-        width: 80%;
-        height: auto;
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-
-    @media (max-width: ${breakpoints.mobileL}) {
-        width: 90%;
-        height: auto;
-    }
-
-    @media (max-width: ${breakpoints.mobileS}) {
-        width: 95%;
-    }
 `;
 const ParagrafoBanner = styled.h3`
     color: #f3fbf6;
@@ -307,9 +280,10 @@ const ParagrafoBanner = styled.h3`
     }
 
     @media (max-width: ${breakpoints.tablet}) {
-        font-size: 22px;
-        line-height: 30px;
+        font-size: 32px;
+        line-height: 50px;
         text-align: center;
+        padding: 16px;
     }
 
     @media (max-width: ${breakpoints.mobileL}) {

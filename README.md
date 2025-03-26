@@ -7,7 +7,7 @@
 
 ## 🚀 Tecnologias Utilizadas
 
-- **Frontend**: React.js com styled-components Inertia.js
+- **Frontend**: React.js com styled-components, Inertia.js, ShadCN UI
 - **Backend**: Laravel com Laravel Breeze (React)
 - **Banco de Dados**: SQLite
 - **Gerenciamento de Estado**: useState e useEffect

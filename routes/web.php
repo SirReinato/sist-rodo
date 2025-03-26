@@ -16,25 +16,28 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Dashboard
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+    // Perfil
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('/profile', 'edit')->name('profile.edit');
+        Route::patch('/profile', 'update')->name('profile.update');
+        Route::delete('/profile', 'destroy')->name('profile.destroy');
+    });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/ocorrencias', [OcorrenciaController::class, 'index'])->name('ocorrencias.index');
-    Route::post('/ocorrencias', [OcorrenciaController::class, 'store'])->name('ocorrencias.store');
-    Route::get('/criar-ocorrencia', function () {
-        return Inertia::render('CriarOcorrencia');
-    })->name('ocorrencias.create');
-    Route::get('/ocorrencias/{id}/editar', [OcorrenciaController::class, 'edit'])->name('ocorrencias.edit');
-    Route::put('/ocorrencias/{id}', [OcorrenciaController::class, 'update'])->name('ocorrencias.update');
-    Route::delete('/ocorrencias/{id}', [OcorrenciaController::class, 'destroy'])->name('ocorrencias.destroy');
+    // Ocorrências
+    Route::controller(OcorrenciaController::class)->prefix('ocorrencias')->name('ocorrencias.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'store')->name('store');
+        Route::get('/criar', 'create')->name('create');
+        Route::get('/{id}/editar', 'edit')->name('edit');
+        Route::put('/{id}', 'update')->name('update');
+        Route::delete('/{id}', 'destroy')->name('destroy');
+    });
 });
 
 require __DIR__ . '/auth.php';

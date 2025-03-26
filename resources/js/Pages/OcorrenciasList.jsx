@@ -46,7 +46,7 @@ const Ocorrencias = () => {
             {/* header */}
             <ContainerCabecalho>
                 <Titulo>Lista de Ocorrências</Titulo>
-                <Link href="/criar-ocorrencia">
+                <Link href="/ocorrencias/criar">
                     <StyledButton>Criar Ocorrência</StyledButton>
                 </Link>
             </ContainerCabecalho>
@@ -91,7 +91,7 @@ const Ocorrencias = () => {
                         <CelulaCabecalho>Problema</CelulaCabecalho>
                         <CelulaCabecalho>Data</CelulaCabecalho>
                         <CelulaCabecalho>Descrição</CelulaCabecalho>
-                        {/* <CelulaCabecalho>Foto</CelulaCabecalho> */}
+                        <CelulaCabecalho>Foto</CelulaCabecalho>
                         <CelulaCabecalho>Ações</CelulaCabecalho>
                     </tr>
                 </CabecalhoTabela>
@@ -106,19 +106,18 @@ const Ocorrencias = () => {
                                 <Celula>{ocorrencia.data_ocorrencia}</Celula>
                                 <Celula>{ocorrencia.descricao}</Celula>
 
-                                {/* Inserir futuramente */}
-                                {/* <Celula>
+                                <Celula>
                                     {ocorrencia.imagem ? (
                                         <img
                                             src={`/storage/${ocorrencia.imagem}`}
                                             alt="Imagem da Ocorrência"
-                                            width="10"
+                                            width="100%"
                                             height="auto"
                                         />
                                     ) : (
                                         "Sem imagem"
                                     )}
-                                </Celula> */}
+                                </Celula>
                                 <Celula>
                                     <Link
                                         href={`/ocorrencias/${ocorrencia.id}/editar`}

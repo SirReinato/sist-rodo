@@ -15,7 +15,7 @@ export default function CriarOcorrencia() {
     });
 
     const handleFileChange = (e) => {
-        setData("imagem", e.target.files[0]); // Armazena a imagem no estado
+        setData("imagem", e.target.files[0]);
     };
 
     const handleSubmit = (e) => {

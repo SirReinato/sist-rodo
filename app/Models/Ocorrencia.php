@@ -17,5 +17,6 @@ class Ocorrencia extends Model
         'descricao',
         'latitude',
         'longitude',
+        'imagem',
     ];
 }

@@ -18,14 +18,14 @@ const breakpoints = {
     desktop: "1700px",
 };
 const ConteinerCards = styled.div`
-    min-width: 200px;
-    width: 200px;
+    min-width: 210px;
+    width: 220px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     min-height: 190px;
     align-items: center;
-    background: #203452;
+    margin-top: 10%;
     gap: 8px;
     padding: 16px;
     border-radius: 18px;
@@ -51,8 +51,9 @@ const ConteinerCards = styled.div`
 `;
 
 const TextoCards = styled.p`
-    font-size: 16px;
+    font-size: 24px;
     font-weight: 300;
+    width: 270px;
     color: #f3fbf6;
     text-align: center;
 
@@ -67,7 +68,7 @@ const TextoCards = styled.p`
 
 const TextoDestaque = styled.h3`
     font-size: 32px;
-    font-weight: 600;
+    font-weight: bold;
     color: #4ebaf5;
     text-align: center;
 

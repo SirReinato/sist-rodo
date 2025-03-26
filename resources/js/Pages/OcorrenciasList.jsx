@@ -159,6 +159,15 @@ const Ocorrencias = () => {
 
 export default Ocorrencias;
 
+export const breakpoints = {
+    mobileS: "320px",
+    mobileM: "375px",
+    mobileL: "429px",
+    tablet: "768px",
+    laptop: "1024px",
+    desktop: "1440px",
+};
+
 const ContainerGeral = styled.div`
     width: 100%;
     border-radius: 32px;
@@ -166,12 +175,20 @@ const ContainerGeral = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media (max-width: ${breakpoints.mobileL}) {
+        padding: 15px;
+        border-radius: 20px;
+    }
 `;
 const ContainerCabecalho = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    @media (max-width: ${breakpoints.mobileM}) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 `;
 
 const Titulo = styled.h1`
@@ -179,18 +196,35 @@ const Titulo = styled.h1`
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 20px;
+    @media (max-width: ${breakpoints.mobileL}) {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
 `;
 
 const FiltrosContainer = styled.div`
     display: flex;
     gap: 12px;
     margin-bottom: 16px;
+    flex-wrap: wrap;
+    justify-content: start;
+    @media (max-width: ${breakpoints.mobileL}) {
+        justify-content: center;
+        align-items: center;
+    }
+    @media (max-width: ${breakpoints.mobileM}) {
+        gap: 8px;
+        justify-content: center;
+    }
 `;
 
 const InputFiltro = styled.input`
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    @media (min-width: ${breakpoints.mobileS}) {
+        width: 100%;
+    }
 `;
 
 const SelectFiltro = styled.select`
@@ -198,6 +232,9 @@ const SelectFiltro = styled.select`
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    @media (max-width: ${breakpoints.mobileL}) {
+        width: 100%;
+    }
 `;
 
 const Tabela = styled.table`
@@ -206,11 +243,18 @@ const Tabela = styled.table`
     background-color: #b7e3fc;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    margin: 20px 0;
     overflow: hidden;
+    @media (max-width: ${breakpoints.tablet}) {
+        font-size: 12px;
+    }
+    @media (max-width: ${breakpoints.mobileL}) {
+        font-size: 10px;
+    }
 `;
 
 const CabecalhoTabela = styled.thead`
-    background-color: #007bff; /* Azul destaque */
+    background-color: #007bff;
     color: white;
 `;
 
@@ -218,18 +262,27 @@ const CelulaCabecalho = styled.th`
     padding: 12px;
     text-align: start;
     font-size: 16px;
+    @media (max-width: ${breakpoints.tablet}) {
+        padding: 8px;
+        font-size: 14px;
+    }
 `;
 
 const Celula = styled.td`
     max-width: 350px;
     padding: 8px;
-    color: #555555; /* Texto secundário */
+    color: #555555;
     font-size: 14px;
+    word-break: break-word;
+    @media (max-width: ${breakpoints.tablet}) {
+        padding: 6px;
+        font-size: 12px;
+    }
 `;
 
 const LinhaTabela = styled.tr`
     &:nth-child(even) {
-        background-color: #f8f8f8; /* Alternância de cores */
+        background-color: #f8f8f8;
     }
 `;
 
@@ -239,6 +292,10 @@ const LinhaAlerta = styled.tr`
         font-weight: bold;
         text-align: center;
         padding: 20px;
+        @media (max-width: ${breakpoints.mobileL}) {
+            padding: 15px;
+            font-size: 14px;
+        }
     }
 `;
 
@@ -256,6 +313,10 @@ const StyledButton = styled.button`
         color: #75ceff;
         background-color: #1a2e4e;
     }
+    @media (max-width: ${breakpoints.mobileL}) {
+        font-size: 0.9rem;
+        padding: 0.4rem;
+    }
 `;
 const ExcluirBotao = styled.button`
     background-color: #e13600;
@@ -269,6 +330,12 @@ const ExcluirBotao = styled.button`
     margin-left: 2px;
     &:hover {
         background-color: #c82333;
+    }
+    @media (max-width: ${breakpoints.mobileL}) {
+        font-size: 0.9rem;
+        padding: 0.4rem;
+        margin-left: 0;
+        margin-top: 5px; /* Adiciona um pouco de espaço acima em telas menores */
     }
 `;
 
@@ -284,4 +351,24 @@ const MapaContainer = styled.div`
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    @media (max-width: ${breakpoints.laptop}) {
+        width: 90%;
+        height: 300px;
+        margin-top: 40px;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+        height: 250px;
+        margin-top: 30px;
+    }
+
+    @media (max-width: ${breakpoints.mobileL}) {
+        width: 95%;
+        height: 200px;
+        margin-top: 20px;
+    }
+
+    @media (max-width: ${breakpoints.mobileS}) {
+        height: 150px;
+    }
 `;

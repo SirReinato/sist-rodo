@@ -40,7 +40,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                         <span className="inline-flex rounded-md">
                                             <button
                                                 type="button"
-                                                className="inline-flex items-center rounded-md border border-transparent bg-black px-3 py-2 text-ms font-medium leading-4 text-white transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none"
+                                                className="inline-flex items-center rounded-md border border-transparent bg-gray px-3 py-2 text-ms font-medium leading-4 text-black transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none"
                                             >
                                                 {user.name}
 
@@ -64,7 +64,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                         <Dropdown.Link
                                             href={route("profile.edit")}
                                         >
-                                            Profile
+                                            Perfil
                                         </Dropdown.Link>
                                         <Dropdown.Link
                                             href={route("logout")}
@@ -85,7 +85,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                         (previousState) => !previousState
                                     )
                                 }
-                                className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
+                                className="inline-flex items-center justify-center rounded-md p-2 text-black-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
                             >
                                 <svg
                                     className="h-6 w-6"
@@ -175,6 +175,16 @@ export default function AuthenticatedLayout({ header, children }) {
     );
 }
 
+// Definição dos breakpoints
+export const breakpoints = {
+    mobileS: "320px",
+    mobileM: "375px",
+    mobileL: "429px",
+    tablet: "768px",
+    laptop: "1024px",
+    desktop: "1440px",
+};
+
 const ContainerGeral = styled.div`
     min-height: 100vh;
     background: linear-gradient(to right, #242437, #1e1e30);
@@ -183,6 +193,15 @@ const ContainerGeral = styled.div`
 const HeaderContainer = styled.header`
     padding: 0 120px;
     width: 100%;
+    @media (max-width: ${breakpoints.mobileS}) {
+        padding: 0 16px;
+    }
+    @media (max-width: ${breakpoints.mobileM}) {
+        padding: 0 16px;
+    }
+    @media (max-width: ${breakpoints.mobileL}) {
+        padding: 0 16px;
+    }
 `;
 
 const NavBar = styled.nav`

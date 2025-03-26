@@ -197,6 +197,7 @@ const ContainerGeral = styled.div`
     padding: 20px;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
     align-items: center;
     @media (max-width: ${breakpoints.mobileL}) {
         padding: 15px;
@@ -208,9 +209,9 @@ const ContainerCabecalho = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    @media (max-width: ${breakpoints.mobileM}) {
-        flex-direction: column;
-        align-items: flex-start;
+    @media (max-width: ${breakpoints.mobileL}) {
+        justify-content: space-between;
+        align-items: center;
     }
 `;
 
@@ -220,7 +221,7 @@ const Titulo = styled.h1`
     font-weight: bold;
     margin-bottom: 20px;
     @media (max-width: ${breakpoints.mobileL}) {
-        font-size: 24px;
+        font-size: 22px;
         margin-bottom: 15px;
     }
 `;
@@ -231,9 +232,9 @@ const FiltrosContainer = styled.div`
     gap: 12px;
     margin-bottom: 16px;
     @media (max-width: ${breakpoints.mobileL}) {
-        flex-wrap: wrap;
-        justify-content: start;
-
+        /* flex-wrap: wrap; */
+        flex-direction: column;
+        width: 100%;
         justify-content: center;
         align-items: center;
     }
@@ -247,9 +248,14 @@ const InputFiltro = styled.input`
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    min-width: 30%;
-    max-width: 31%;
+    min-width: 100%;
+    max-width: 300px;
     @media (max-width: ${breakpoints.tablet}) {
+    }
+    @media (min-width: ${breakpoints.mobileL}) {
+        min-width: 100%;
+        width: 300px;
+        color: aqua;
     }
     @media (min-width: ${breakpoints.mobileS}) {
         width: 100%;
@@ -293,6 +299,10 @@ const CelulaCabecalho = styled.th`
     font-size: 16px;
     @media (max-width: ${breakpoints.tablet}) {
         padding: 8px;
+        font-size: 14px;
+    }
+    @media (max-width: ${breakpoints.mobileL}) {
+        padding: 6px;
         font-size: 14px;
     }
 `;

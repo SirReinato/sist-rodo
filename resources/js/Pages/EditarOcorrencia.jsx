@@ -13,7 +13,7 @@ const EditarOcorrencia = ({ ocorrencia }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        put(`/ocorrencias/${ocorrencia.id}`);
+        put(`/ocorrencias/${ocorrencia.id}`, data);
     };
 
     return (
@@ -40,17 +40,26 @@ const EditarOcorrencia = ({ ocorrencia }) => {
                     {errors.trecho && <Erro>{errors.trecho}</Erro>}
 
                     <Label>Problema:</Label>
-                    <Input
-                        type="text"
+                    <Select
                         value={data.tipo_problema}
                         onChange={(e) =>
                             setData("tipo_problema", e.target.value)
                         }
-                    />
+                    >
+                        <option value="" disabled>
+                            Selecione um problema
+                        </option>
+                        <option value="buraco">Buraco</option>
+                        <option value="sinalização danificada">
+                            Sinalização danificada
+                        </option>
+                        <option value="erosão">Erosão</option>
+                        <option value="alagamento">Alagamento</option>
+                        <option value="outro">Outro</option>
+                    </Select>
                     {errors.tipo_problema && (
                         <Erro>{errors.tipo_problema}</Erro>
                     )}
-
                     <Label>Data:</Label>
                     <Input
                         type="date"
@@ -123,7 +132,12 @@ const Input = styled.input`
     border: 1px solid #ccc;
     border-radius: 4px;
 `;
-
+const Select = styled.select`
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+`;
 const TextArea = styled.textarea`
     padding: 8px;
     margin-top: 5px;

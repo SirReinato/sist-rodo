@@ -3,7 +3,7 @@ import { Link, useForm } from "@inertiajs/react";
 import styled from "styled-components";
 
 export default function CriarOcorrencia() {
-    const { data, setData, post, processing, errors } = useForm({
+    const { data, setData, post, processing } = useForm({
         nome_rodovia: "",
         trecho: "",
         tipo_problema: "",
@@ -21,25 +21,10 @@ export default function CriarOcorrencia() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const formData = new FormData();
-
-        formData.append("nome_rodovia", data.nome_rodovia);
-        formData.append("trecho", data.trecho);
-        formData.append("tipo_problema", data.tipo_problema);
-        formData.append("data_ocorrencia", data.data_ocorrencia);
-        formData.append("latitude", data.latitude);
-        formData.append("longitude", data.longitude);
-        formData.append("data_ocorrencia", data.data_ocorrencia);
-        formData.append("descricao", data.descricao);
-        if (data.imagem) {
-            formData.append("imagem", data.imagem);
-        }
-
+        e.preventDefault();
         post(route("ocorrencias.store"), {
-            data: formData,
-            headers: {
-                "Content-Type": "multipart/form-data",
-            },
+            data,
+            forceFormData: true,
         });
     };
 
@@ -101,7 +86,7 @@ export default function CriarOcorrencia() {
                             setData("data_ocorrencia", e.target.value)
                         }
                     />
-                    <Input
+                    <Textarea
                         type="textarea"
                         rows="5"
                         cols="33"
@@ -162,6 +147,12 @@ const Input = styled.input`
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+`;
+const Textarea = styled.textarea`
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
 `;
 const HomeButton = styled.p`
     font-size: 16px;

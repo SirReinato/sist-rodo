@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 const Mapa = ({ ocorrencias }) => {
-    const center = [-15.7801, -47.9292]; // Brasília
+    const center = [-15.8706, -48.0902]; // Brasília
 
     return (
         <MapContainer

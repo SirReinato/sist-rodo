@@ -15,6 +15,7 @@ const Ocorrencias = () => {
         data_ocorrencia: "",
     });
 
+    // Atualiza a lista de ocorrências ao alterar os filtros
     useEffect(() => {
         carregarOcorrencias();
     }, [filtros]);
@@ -28,9 +29,9 @@ const Ocorrencias = () => {
         setFiltros({ ...filtros, [e.target.name]: e.target.value });
     };
 
+    // Deletar ocorrencia
     const { delete: destroy, processing } = useForm();
 
-    // Deletar ocorrencia
     const handleDelete = (id) => {
         if (confirm("Tem certeza que deseja excluir esta ocorrência?")) {
             destroy(`/ocorrencias/${id}`, {
@@ -43,6 +44,7 @@ const Ocorrencias = () => {
         }
     };
 
+    // Modal
     const [ocorrenciaSelecionada, setOcorrenciaSelecionada] = useState(null);
     const [modalAberto, setModalAberto] = useState(false);
 
@@ -182,6 +184,7 @@ const Ocorrencias = () => {
 
 export default Ocorrencias;
 
+// breakpoints para deixar o layout responsivo
 export const breakpoints = {
     mobileS: "320px",
     mobileM: "375px",
@@ -231,15 +234,17 @@ const FiltrosContainer = styled.div`
     justify-content: center;
     gap: 12px;
     margin-bottom: 16px;
+    width: 60%;
     @media (max-width: ${breakpoints.mobileL}) {
         /* flex-wrap: wrap; */
         flex-direction: column;
-        width: 100%;
+        width: 50%;
         justify-content: center;
         align-items: center;
     }
     @media (max-width: ${breakpoints.mobileM}) {
         gap: 8px;
+        width: 100%;
         justify-content: center;
     }
 `;
@@ -248,28 +253,14 @@ const InputFiltro = styled.input`
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    min-width: 100%;
-    max-width: 300px;
-    @media (max-width: ${breakpoints.tablet}) {
-    }
-    @media (min-width: ${breakpoints.mobileL}) {
-        min-width: 100%;
-        width: 300px;
-        color: aqua;
-    }
-    @media (min-width: ${breakpoints.mobileS}) {
-        width: 100%;
-    }
+    width: 300px;
 `;
 
 const SelectFiltro = styled.select`
-    width: 200px;
+    width: 300px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    @media (max-width: ${breakpoints.mobileL}) {
-        width: 100%;
-    }
 `;
 
 const Tabela = styled.table`
@@ -374,7 +365,7 @@ const ExcluirBotao = styled.button`
         font-size: 0.9rem;
         padding: 0.4rem;
         margin-left: 0;
-        margin-top: 5px; /* Adiciona um pouco de espaço acima em telas menores */
+        margin-top: 5px;
     }
 `;
 

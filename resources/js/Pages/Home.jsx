@@ -37,14 +37,6 @@ export default function Home({ auth }) {
                             Trânsito Mais Seguro
                         </ParagrafoBanner>
                     </ConteinerTexto>
-                    <ConteinerCards>
-                        <Card>
-                            <CardsWelcome
-                                texto={"São  aproximadamente"}
-                                destaque={"75.000 Km Em Rodovias"}
-                            />
-                        </Card>
-                    </ConteinerCards>
                 </ConteinerBanner>
             </ContainerGeral>
         </>
@@ -226,48 +218,20 @@ const ConteinerTexto = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
-    width: 40%;
+    align-items: center;
+    text-align: center;
+    width: 100%;
     @media (max-width: ${breakpoints.tablet}) {
         width: 100%;
         height: 100%;
     }
 `;
 
-const ConteinerCards = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-
-    @media (max-width: ${breakpoints.tablet}) {
-        display: none;
-    }
-`;
-const Card = styled.div`
-    background: url(${card}) no-repeat center;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: start;
-    margin-right: -13px;
-    width: 450px;
-    height: 60%;
-    @media (max-width: ${breakpoints.desktop}) {
-        margin-right: -15px;
-        width: 450px;
-        height: 80%;
-    }
-    @media (max-width: ${breakpoints.laptop}) {
-        width: 400px;
-        height: 55%;
-    }
-`;
 const ParagrafoBanner = styled.h3`
     color: #f3fbf6;
     font-size: 42px;
     letter-spacing: 0.1em;
-
+    width: 80%;
     font-family: "Roboto", sans-serif;
     line-height: 56px;
     font-weight: bold;
